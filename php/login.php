@@ -33,10 +33,41 @@ if (!empty($errors)) {
         $result = $stmt->fetch();
         if( $result ){
             
-        $data['success'] = true;
-        $data['errors'] = false;
-        $data['message'] = 'Success!';
-        $data['response'] = $result;
+            $email = $result['email'];
+            // MONGO INSERT START
+            $manager = new MongoDB\Driver\Manager("mongodb+srv://gokulkrishna_r:gokulkrishna_r_1183@guvi-task.tohgkb0.mongodb.net/?retryWrites=true&w=majority");
+            $collection = "guvi.user_data";
+            $query = new MongoDB\Driver\Query(["_id" => $email]);
+            $localIP = getHostByName(getHostName());
+            $exeresult = $manager->executeQuery($collection, $query);
+            // echo $localIP ;
+            if ($exeresult->isDead()) {
+                // echo "Document with _id value $email does not exist in collection.";
+                $document = [
+                    "_id" => $email,
+                    "last_login_time" => $_POST['time'],
+                    "last_loggedin_ip" => $localIP,
+                ];
+                $bulk = new MongoDB\Driver\BulkWrite();
+                $bulk->insert($document);
+                $manager->executeBulkWrite($collection, $bulk);
+            } else {
+                // echo "Document with _id value $email exists in collection.";
+                $filter = ["_id" => $email];
+                $update = ['$set' => [
+                    "last_login_time" => $_POST['time'],
+                    "last_loggedin_ip" => $localIP ]
+                ];
+                $bulk = new MongoDB\Driver\BulkWrite();
+                $bulk->update($filter, $update);
+                $manager->executeBulkWrite($collection, $bulk);
+            }
+            // MONGO INSERT END
+
+            $data['success'] = true;
+            $data['errors'] = false;
+            $data['message'] = 'Success!';
+            $data['response'] = $result;
         }
     } else {
         $errors['login'] = "SignUp Failed";

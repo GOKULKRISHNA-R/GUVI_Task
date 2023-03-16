@@ -17,7 +17,7 @@ function onSubmit() {
 
     if (xmlHTTP.readyState == 4 && xmlHTTP.status == 200) {
       var data = JSON.parse(xmlHTTP.responseText);
-      console.log(data);
+      // console.log(data);
       if (!data.success) {
         if (data.length > 0) {
           if (data.errors.email) {
@@ -52,9 +52,31 @@ function onSubmit() {
 
   var email = document.getElementById("email").value;
   var password = document.getElementById("password").value;
+  // var ip = "";
+
+  var currentdate = new Date();
+  var datetime =
+    "Last Sync: " +
+    currentdate.getDate() +
+    "/" +
+    (currentdate.getMonth() + 1) +
+    "/" +
+    currentdate.getFullYear() +
+    " @ " +
+    currentdate.getHours() +
+    ":" +
+    currentdate.getMinutes() +
+    ":" +
+    currentdate.getSeconds();
 
   var url = "http://localhost/guvi_task/php/login.php";
-  var data = "email=" + email + "&password=" + password;
+  var data =
+    "email=" +
+    email +
+    "&password=" +
+    password +
+    "&time=" +
+    datetime;
 
   xmlHTTP.open("POST", url, true);
   xmlHTTP.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
