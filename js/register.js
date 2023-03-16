@@ -1,3 +1,9 @@
+$(document).ready(function () {
+  if (localStorage.getItem("email")) {
+    window.location.replace("./../profile.html");
+  }
+});
+
 function onSubmit() {
 
   if (window.XMLHttpRequest) {
