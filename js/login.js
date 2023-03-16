@@ -32,8 +32,12 @@ function onSubmit() {
           }
   
         } else {
-        //   alert("Profile Created");
-        //   window.location.href = "./../login.html";
+          localStorage.setItem("name",data.response.name);
+          localStorage.setItem("email",data.response.email);
+          localStorage.setItem("dob",data.response.dob);
+          localStorage.setItem("mobile",data.response.mobile);
+
+          window.location.replace("./../profile.html");
         }
       }
     };
@@ -41,7 +45,7 @@ function onSubmit() {
     var email = document.getElementById("email").value;
     var password = document.getElementById("password").value;
   
-    var url = "http://localhost:81/guvi_task/php/login.php";
+    var url = "http://localhost/guvi_task/php/login.php";
     var data =
       "email=" +
       email +

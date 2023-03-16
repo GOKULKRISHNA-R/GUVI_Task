@@ -81,7 +81,7 @@ function onSubmit() {
   var password = document.getElementById("password").value;
   var confirmPassword = document.getElementById("Cpassword").value;
 
-  var url = "http://localhost:81/guvi_task/php/register.php";
+  var url = "http://localhost/guvi_task/php/register.php";
   var data =
     "name=" +
     name +
