@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LogIn</title>
+    <link rel="stylesheet" href="./css/auth.css" />
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+  </head>
+
+  <body>
+    <div class="root">
+      <div class="container">
+        <div class="box">
+          <h1>Log In</h1>
+
+          <div id="email-grp" class="r email-grp form-input">
+            <label for="email">Email id</label>
+            <input type="email" name="email" id="email" />
+          </div>
+          <div id="pass-grp" class="r pass-grp form-input">
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" />
+          </div>
+          <button type="submit" onclick="onSubmit()">LogIn</button>
+          <p>Don't Have Account ? <a href="./register.html">Register Now</a></p>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="./js/login.js"></script>
+</html>
