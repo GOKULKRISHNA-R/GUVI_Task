@@ -10,16 +10,29 @@
   </head>
   <body>
     <div class="root">
-      <h1>Welcome</h1>
-      <label for="name" class="name">Name</label>
-      <input type="text" name="name" id="name" />
-      <label for="date" class="date">Date of Birth</label>
-      <input type="date" name="date" id="date" />
-      <label for="mobile" class="mobile">Mobile Number</label>
-      <input type="text" name="mobile" id="mobile" />
-      <label for="email">Email id</label>
-      <input type="email" name="email" id="email" />
-      <button onclick="logout()">LogOut</button>
+      <div class="details">
+        <h1 class="heading">Profile</h1>
+        <div class="d" id="name"><h3>Name :</h3></div>
+        <div class="d" id="date"><h3>DOB :</h3></div>
+        <div class="d" id="mobile"><h3>Mobile Number :</h3></div>
+        <div class="d" id="email"><h3>Email :</h3></div>
+        <div class="linkedin">
+          <label for="linkedin">Linked in URL :</label>
+          <input type="url" name="linkedin" id="linkedin" />
+          <button class="upload">⬆️</button>
+        </div>
+        <div class="github">
+          <label for="github">Git Hub Url :</label>
+          <input type="url" name="github" id="github" /> 
+          <button class="upload">⬆️</button>
+        </div>
+        <div class="address">
+          <label for="address">Address :</label>
+          <input type="text" name="address" id="address" />
+          <button class="upload">⬆️</button>
+        </div>
+        <button class="btn" onclick="logout()">LogOut</button>
+      </div>
     </div>
   </body>
   <script src="./js/profile.js"></script>

@@ -4,10 +4,10 @@ $(document).ready(function () {
     window.location.replace("./../login.html");
   }
   
-  $("#name").val(localStorage.getItem("name"));
-  $("#date").val(localStorage.getItem("dob"));
-  $("#mobile").val(localStorage.getItem("mobile"));
-  $("#email").val(localStorage.getItem("email"));
+  $('<h3>'+localStorage.getItem("name")+'</h3>').appendTo("#name");
+  $('<h3>'+localStorage.getItem("dob")+'</h3>').appendTo("#date");
+  $('<h3>'+localStorage.getItem("mobile")+'</h3>').appendTo("#mobile");
+  $('<h3>'+localStorage.getItem("email")+'</h3>').appendTo("#email");
 });
 
 function logout() {
