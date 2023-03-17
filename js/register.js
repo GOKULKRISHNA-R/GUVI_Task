@@ -5,7 +5,6 @@ $(document).ready(function () {
 });
 
 function onSubmit() {
-
   if (window.XMLHttpRequest) {
     xmlHTTP = new XMLHttpRequest();
   } else {
@@ -17,65 +16,69 @@ function onSubmit() {
     $(".r").removeClass("has-error");
 
     if (xmlHTTP.readyState == 4 && xmlHTTP.status == 200) {
-      var data = JSON.parse(xmlHTTP.responseText);
-      console.log(data);
-      if (!data.success) {
-        if (data.errors.name) {
-          $("#name-grp").addClass("has-error");
-          $("#name-grp").append(
-            '<div class="help-block">' + data.errors.name + "</div>"
-          );
-        }
-
-        if (data.errors.email) {
-          $("#email-grp").addClass("has-error");
-          $("#email-grp").append(
-            '<div class="help-block">' + data.errors.email + "</div>"
-          );
-        }
-
-        if (data.errors.dob) {
-          $("#dob-grp").addClass("has-error");
-          $("#dob-grp").append(
-            '<div class="help-block">' + data.errors.dob + "</div>"
-          );
-        }
-
-        if (data.errors.mobile) {
-          $("#mobile-grp").addClass("has-error");
-          $("#mobile-grp").append(
-            '<div class="help-block">' + data.errors.mobile + "</div>"
-          );
-        }
-
-        if (data.errors.password) {
-          $("#pass-grp").addClass("has-error");
-          $("#pass-grp").append(
-            '<div class="help-block">' + data.errors.password + "</div>"
-          );
-        }
-
-        if (data.errors.cPassword) {
-          $("#cpass-grp").addClass("has-error");
-          $("#cpass-grp").append(
-            '<div class="help-block">' + data.errors.cPassword + "</div>"
-          );
-        }
-
-        if (data.errors.checkPassword) {
-          $("#cpass-grp").addClass("has-error");
-          $("#cpass-grp").append(
-            '<div class="help-block">' + data.errors.checkPassword + "</div>"
-          );
-        }
-
-        if (data.errors.login) {
-            alert(" Oops !!! "+ data.errors.login ) ;
-        }
-
+      var rt = xmlHTTP.responseText;
+      if (rt.toLowerCase().includes("duplicate")) {
+        alert("Email already Exists");
       } else {
-        alert("Profile Created");
-        window.location.href = "./../login.html";
+        var data = JSON.parse(rt);
+        console.log(data);
+        if (!data.success) {
+          if (data.errors.name) {
+            $("#name-grp").addClass("has-error");
+            $("#name-grp").append(
+              '<div class="help-block">' + data.errors.name + "</div>"
+            );
+          }
+
+          if (data.errors.email) {
+            $("#email-grp").addClass("has-error");
+            $("#email-grp").append(
+              '<div class="help-block">' + data.errors.email + "</div>"
+            );
+          }
+
+          if (data.errors.dob) {
+            $("#dob-grp").addClass("has-error");
+            $("#dob-grp").append(
+              '<div class="help-block">' + data.errors.dob + "</div>"
+            );
+          }
+
+          if (data.errors.mobile) {
+            $("#mobile-grp").addClass("has-error");
+            $("#mobile-grp").append(
+              '<div class="help-block">' + data.errors.mobile + "</div>"
+            );
+          }
+
+          if (data.errors.password) {
+            $("#pass-grp").addClass("has-error");
+            $("#pass-grp").append(
+              '<div class="help-block">' + data.errors.password + "</div>"
+            );
+          }
+
+          if (data.errors.cPassword) {
+            $("#cpass-grp").addClass("has-error");
+            $("#cpass-grp").append(
+              '<div class="help-block">' + data.errors.cPassword + "</div>"
+            );
+          }
+
+          if (data.errors.checkPassword) {
+            $("#cpass-grp").addClass("has-error");
+            $("#cpass-grp").append(
+              '<div class="help-block">' + data.errors.checkPassword + "</div>"
+            );
+          }
+
+          if (data.errors.login) {
+            alert(" Oops !!! " + data.errors.login);
+          }
+        } else {
+          alert("Profile Created");
+          window.location.href = "./../login.html";
+        }
       }
     }
   };
@@ -86,6 +89,20 @@ function onSubmit() {
   var email = document.getElementById("email").value;
   var password = document.getElementById("password").value;
   var confirmPassword = document.getElementById("Cpassword").value;
+  var currentdate = new Date();
+  var datetime =
+    "Created on : " +
+    currentdate.getDate() +
+    "/" +
+    (currentdate.getMonth() + 1) +
+    "/" +
+    currentdate.getFullYear() +
+    " @ " +
+    currentdate.getHours() +
+    ":" +
+    currentdate.getMinutes() +
+    ":" +
+    currentdate.getSeconds();
 
   var url = "http://localhost/guvi_task/php/register.php";
   var data =
@@ -100,7 +117,9 @@ function onSubmit() {
     "&password=" +
     password +
     "&cPassword=" +
-    confirmPassword;
+    confirmPassword +
+    "&time=" +
+    datetime;
 
   xmlHTTP.open("POST", url, true);
   xmlHTTP.setRequestHeader("Content-type", "application/x-www-form-urlencoded");

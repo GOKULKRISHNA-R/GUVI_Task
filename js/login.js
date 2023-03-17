@@ -52,7 +52,6 @@ function onSubmit() {
 
   var email = document.getElementById("email").value;
   var password = document.getElementById("password").value;
-  // var ip = "";
 
   var currentdate = new Date();
   var datetime =

@@ -51,6 +51,22 @@ if (!empty($errors)) {
     $stmt->bindParam(':password', $_POST['password']);
 
     if ($stmt->execute()) {
+
+
+        // MONGO INSERT START
+            $email = $_POST['email'];
+            $manager = new MongoDB\Driver\Manager("mongodb+srv://gokulkrishna_r:gokulkrishna_r_1183@guvi-task.tohgkb0.mongodb.net/?retryWrites=true&w=majority");
+            $collection = "guvi.user_data";
+            $document = [
+                "_id" => $email,
+                "acc_created_time" => $_POST['time'],
+            ];
+            $bulk = new MongoDB\Driver\BulkWrite();
+            $bulk->insert($document);
+            $manager->executeBulkWrite($collection, $bulk);
+        // MONGO INSERT END
+
+
         $data['success'] = true;
         $data['errors'] = false;
         $data['message'] = 'Success!';
