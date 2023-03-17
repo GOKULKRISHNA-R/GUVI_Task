@@ -21,55 +21,62 @@ function onSubmit() {
         alert("Email already Exists");
       } else {
         var data = JSON.parse(rt);
-        console.log(data);
+        // console.log(data);
         if (!data.success) {
           if (data.errors.name) {
+            var div = document.createElement("div");
+            div.innerText = data.errors.name;
+            div.className = "help-block";
             $("#name-grp").addClass("has-error");
-            $("#name-grp").append(
-              '<div class="help-block">' + data.errors.name + "</div>"
-            );
+            $("#name-grp").append(div);
           }
 
           if (data.errors.email) {
+            var div = document.createElement("div");
+            div.innerText = data.errors.email;
+            div.className = "help-block";
             $("#email-grp").addClass("has-error");
-            $("#email-grp").append(
-              '<div class="help-block">' + data.errors.email + "</div>"
-            );
+            $("#email-grp").append(div);
           }
 
           if (data.errors.dob) {
+            var div = document.createElement("div");
+            div.innerText = data.errors.dob;
+            div.className = "help-block";
             $("#dob-grp").addClass("has-error");
-            $("#dob-grp").append(
-              '<div class="help-block">' + data.errors.dob + "</div>"
-            );
+            $("#dob-grp").append(div);
           }
 
           if (data.errors.mobile) {
+            var div = document.createElement("div");
+            div.innerText = data.errors.mobile;
+            div.className = "help-block";
             $("#mobile-grp").addClass("has-error");
-            $("#mobile-grp").append(
-              '<div class="help-block">' + data.errors.mobile + "</div>"
-            );
+            $("#mobile-grp").append(div);
           }
 
           if (data.errors.password) {
+            var div = document.createElement("div");
+            div.innerText = data.errors.password;
+            div.className = "help-block";
             $("#pass-grp").addClass("has-error");
-            $("#pass-grp").append(
-              '<div class="help-block">' + data.errors.password + "</div>"
-            );
+            $("#pass-grp").append(div);
           }
 
           if (data.errors.cPassword) {
+            var div = document.createElement("div");
+            div.innerText = data.errors.cPassword;
+            div.className = "help-block";
             $("#cpass-grp").addClass("has-error");
-            $("#cpass-grp").append(
-              '<div class="help-block">' + data.errors.cPassword + "</div>"
-            );
+            $("#cpass-grp").append(div);
           }
 
           if (data.errors.checkPassword) {
+            var div = document.createElement("div");
+            div.innerText = data.errors.checkPassword;
+            div.className = "help-block";
             $("#cpass-grp").addClass("has-error");
-            $("#cpass-grp").append(
-              '<div class="help-block">' + data.errors.checkPassword + "</div>"
-            );
+            $("#cpass-grp").append(div);
           }
 
           if (data.errors.login) {

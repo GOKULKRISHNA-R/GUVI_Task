@@ -4,7 +4,6 @@ $(document).ready(function () {
   }
 });
 
-
 function onSubmit() {
   if (window.XMLHttpRequest) {
     xmlHTTP = new XMLHttpRequest();
@@ -22,16 +21,18 @@ function onSubmit() {
       if (!data.success) {
         if (data) {
           if (data.errors.email) {
+            var div = document.createElement("div");
+            div.innerText = data.errors.email ;
+            div.className= "help-block";
             $("#email-grp").addClass("has-error");
-            $("#email-grp").append(
-              '<div class="help-block">' + data.errors.email + "</div>"
-            );
+            $("#email-grp").append(div);
           }
           if (data.errors.password) {
+            var div = document.createElement("div");
+            div.innerText = data.errors.password ;
+            div.className="help-block";
             $("#pass-grp").addClass("has-error");
-            $("#pass-grp").append(
-              '<div class="help-block">' + data.errors.password + "</div>"
-            );
+            $("#pass-grp").append(div );
           }
         } else {
           alert(" Oops !!! Login-Failed");
@@ -70,13 +71,7 @@ function onSubmit() {
     currentdate.getSeconds();
 
   var url = "http://localhost/guvi_task/php/login.php";
-  var data =
-    "email=" +
-    email +
-    "&password=" +
-    password +
-    "&time=" +
-    datetime;
+  var data = "email=" + email + "&password=" + password + "&time=" + datetime;
 
   xmlHTTP.open("POST", url, true);
   xmlHTTP.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
