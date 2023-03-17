@@ -9,6 +9,9 @@ header('Access-Control-Allow-Headers: Content-Type');
 $errors = [];
 $data = [];
 
+$redis = new Redis(); 
+$redis->connect('127.0.0.1', 6379);
+
 if (empty($_POST['email'])) {
     $errors['email'] = 'Email is required.';
 }
@@ -20,6 +23,13 @@ if (!empty($errors)) {
     $data['success'] = false;
     $data['errors'] = $errors;
 } else {
+    include 'redis.php' ;
+    $redisObj = new RedisLogin ;
+    $redisResult = $redisObj->log($_POST['email']);
+    // $result = [];
+    if( $redisResult == -1 )
+    {
+        
     include 'DbConnect.php';
     $objDb = new DbConnect;
     $conn = $objDb->connect();
@@ -52,10 +62,37 @@ if (!empty($errors)) {
             $data['errors'] = false;
             $data['message'] = 'Success!';
             $data['response'] = $result;
+
+            // REDIS START 
+                // echo "Connection to server sucessfully"; 
+                $redis->set("email", $result['email']); 
+                $redis->set("name", $result['name']); 
+                $redis->set("password", $result['password']); 
+                $redis->set("dob", $result['dob']); 
+                $redis->set("mobile", $result['mobile']); 
+       // REDIS END
         }
     } else {
         $errors['login'] = "SignUp Failed";
         $data['success'] = false;
+        $data['error'] = $errors;
+    }
+    
+}else if( $redisResult == 0 ) {
+    $errors['login'] = "SignUp Failed. Incorrect username Password";
+    $data['success'] = false;
+    $data['error'] = $errors;
+
+    }else {
+        // echo 'alert("from redis")';  
+        $data['success'] = true;
+        $data['errors'] = false;
+        $data['message'] = 'Success!';
+        $data['response']["email"] = $redis->get("email");
+        $data['response']["name"] = $redis->get("name");
+        $data['response']["password"] = $redis->get("password");
+        $data['response']["dob"] = $redis->get("dob");
+        $data['response']["mobile"] = $redis->get("mobile");
     }
 }
 

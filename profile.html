@@ -4,34 +4,82 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Register</title>
+    <title>Home</title>
     <link rel="stylesheet" href="./css/profile.css" />
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
   </head>
   <body>
     <div class="root">
-      <div class="details">
-        <h1 class="heading">Profile</h1>
-        <div class="d" id="name"><h3>Name :</h3></div>
-        <div class="d" id="date"><h3>DOB :</h3></div>
-        <div class="d" id="mobile"><h3>Mobile Number :</h3></div>
-        <div class="d" id="email"><h3>Email :</h3></div>
-        <div class="linkedin">
-          <label for="linkedin">Linked in URL :</label><br>
-          <input type="url" name="linkedin" id="linkedin" />
-          <button id="linkedinbtn" class="upload">Update</button>
+      <button class="butn" onclick="logout()">LogOut</button>
+      <div class="d-flex align-items-center justify-content-center w-100 h-100">
+        <div class="details mx-auto">
+          <h1 class="heading">Profile</h1>
+          <div class="row" id="name">
+            <div class="col-6">
+              <h3>Name :</h3>
+            </div>
+          </div>
+          <div class="row" id="date">
+            <div class="col-6">
+              <h3>DOB :</h3>
+            </div>
+          </div>
+          <div class="row" id="email">
+            <div class="col-6">
+              <h3>Email :</h3>
+            </div>
+          </div>
+          <div class="row" id="mobile">
+            <div class="col-6">
+              <h3>Mobile :</h3>
+            </div>
+          </div>
+          <div class="row">
+            <div class="row col-12">
+              <label for="linkedin" class="col-12"> Linkedin : </label>
+            </div>
+            <div class="col-12 row">
+              <div class="col-7">
+                <input type="text" name="linkedin" id="linkedin" />
+              </div>
+              <div class="col-4 offset-1">
+                <button id="linkedinbtn" class="upload">Update</button>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="row col-12">
+              <label for="github" class="col-12"> Github : </label>
+            </div>
+            <div class="col-12 row">
+              <div class="col-7">
+                <input type="text" name="github" id="github" />
+              </div>
+              <div class="col-4 offset-1">
+                <button id="githubbtn" class="upload">Update</button>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="row col-12">
+              <label for="address" class="col-12"> Address : </label>
+            </div>
+            <div class="col-12 row">
+              <div class="col-7">
+                <input type="text" name="address" id="address" />
+              </div>
+              <div class="col-4 offset-1">
+                <button id="addressbtn" class="upload">Update</button>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="github">
-          <label for="github">Git Hub Url :</label><br>
-          <input type="url" name="github" id="github" /> 
-          <button id="githubbtn" class="upload">Update</button>
-        </div>
-        <div class="address">
-          <label for="address">Address :</label><br>
-          <input type="text" name="address" id="address" />
-          <button id="addressbtn" class="upload">Update</button>
-        </div>
-        <button class="btn" onclick="logout()">LogOut</button>
       </div>
     </div>
   </body>

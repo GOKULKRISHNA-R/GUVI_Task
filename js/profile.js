@@ -4,10 +4,10 @@ $(document).ready(function () {
     window.location.replace("./../login.html");
   }
   
-  $('<h3>'+localStorage.getItem("name")+'</h3>').appendTo("#name");
-  $('<h3>'+localStorage.getItem("dob")+'</h3>').appendTo("#date");
-  $('<h3>'+localStorage.getItem("mobile")+'</h3>').appendTo("#mobile");
-  $('<h3>'+localStorage.getItem("email")+'</h3>').appendTo("#email");
+  $('<h3 class="col-6" >'+localStorage.getItem("name")+'</h3>').appendTo("#name");
+  $('<h3 class="col" >'+localStorage.getItem("dob")+'</h3>').appendTo("#date");
+  $('<h3 class="col" >'+localStorage.getItem("mobile")+'</h3>').appendTo("#mobile");
+  $('<h3 class="col" >'+localStorage.getItem("email")+'</h3>').appendTo("#email");
 
 
   if (window.XMLHttpRequest) {
@@ -51,36 +51,6 @@ function logout() {
   localStorage.clear();
   window.location.replace("./../login.html");
 }
-
-$("#linkedinbtn").click(function () {
-   var linkedin = $("#linkedin").val() ;
-  console.log(linkedin);
-   if (window.XMLHttpRequest) {
-    xmlHTTP = new XMLHttpRequest();
-  } else {
-    xmlHTTP = new ActiveXObject("Microsoft.XMLHTTP");
-  }
-
-  xmlHTTP.onreadystatechange = function () {
-
-    if (xmlHTTP.readyState == 4 && xmlHTTP.status == 200) {
-        console.log(xmlHTTP.responseText);
-    }
-
-
-  }
-
-  var url = "http://localhost/guvi_task/php/profile.php";
-  var data =
-    "email="+
-    localStorage.getItem("email") +
-    "&linkedin=" +
-    linkedin ;
-
-  xmlHTTP.open("POST", url, true);
-  xmlHTTP.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-  xmlHTTP.send(data);
-});
 
 $("#linkedinbtn").click(function () {
    var linkedin = $("#linkedin").val() ;

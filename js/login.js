@@ -4,6 +4,7 @@ $(document).ready(function () {
   }
 });
 
+
 function onSubmit() {
   if (window.XMLHttpRequest) {
     xmlHTTP = new XMLHttpRequest();
@@ -16,10 +17,10 @@ function onSubmit() {
     $(".r").removeClass("has-error");
 
     if (xmlHTTP.readyState == 4 && xmlHTTP.status == 200) {
+      console.log(xmlHTTP.responseText);
       var data = JSON.parse(xmlHTTP.responseText);
-      // console.log(data);
       if (!data.success) {
-        if (data.length > 0) {
+        if (data) {
           if (data.errors.email) {
             $("#email-grp").addClass("has-error");
             $("#email-grp").append(
@@ -33,7 +34,7 @@ function onSubmit() {
             );
           }
         } else {
-          alert(" Oops !!! Login Failed");
+          alert(" Oops !!! Login-Failed");
         }
       } else {
         if (!data.response) {
@@ -50,8 +51,8 @@ function onSubmit() {
     }
   };
 
-  var email = document.getElementById("email").value;
-  var password = document.getElementById("password").value;
+  var email = $("#email").val();
+  var password = $("#password").val();
 
   var currentdate = new Date();
   var datetime =

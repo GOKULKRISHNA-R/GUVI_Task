@@ -9,6 +9,7 @@ header('Access-Control-Allow-Headers: Content-Type');
 $data= [];
 $email = $_POST['email'];
 
+// MONGO DB START
     $manager = new MongoDB\Driver\Manager("mongodb+srv://gokulkrishna_r:gokulkrishna_r_1183@guvi-task.tohgkb0.mongodb.net/?retryWrites=true&w=majority");
     $collection = "guvi.user_data";
     $localIP = getHostByName(getHostName());
@@ -34,7 +35,8 @@ $email = $_POST['email'];
     $result = $manager->executeBulkWrite($collection, $bulk);
     // echo $result;
     $data["res"] = $result ;
-    
+// MONGO DB START
+
 echo json_encode($data);
 
 ?>
