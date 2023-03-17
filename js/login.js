@@ -16,8 +16,8 @@ function onSubmit() {
     $(".r").removeClass("has-error");
 
     if (xmlHTTP.readyState == 4 && xmlHTTP.status == 200) {
-      console.log(xmlHTTP.responseText);
       var data = JSON.parse(xmlHTTP.responseText);
+      // console.log(data);
       if (!data.success) {
         if (data.length > 0) {
           if (data.errors.email) {
