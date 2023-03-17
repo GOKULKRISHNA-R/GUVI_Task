@@ -1,13 +1,13 @@
 <?php
-    class DbConnect { 
+    class DbConnect {
+        private $server = 'localhost';
+        private $dbname = 'guvi_task';
+        private $user = 'root';
+        private $pass = '';
+ 
         public function connect() {
             try {
-                $dsn = "mysql:host={$_ENV["HOST"]};dbname={$_ENV["DATABASE"]}";
-                $options = array(
-                  PDO::MYSQL_ATTR_SSL_CA => "/etc/ssl/certs/ca-certificates.crt",
-                );
-                
-                $conn = new PDO($dsn, $_ENV["USERNAME"], $_ENV["PASSWORD"], $options);
+                $conn = new PDO('mysql:host=' .$this->server .';dbname=' . $this->dbname, $this->user, $this->pass);
                 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 return $conn;
             } catch (\Exception $e) {

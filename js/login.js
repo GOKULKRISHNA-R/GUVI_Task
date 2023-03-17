@@ -68,7 +68,7 @@ function onSubmit() {
     ":" +
     currentdate.getSeconds();
 
-  var url = "https://guvi-task-63.000webhostapp.com/login.php";
+  var url = "http://localhost/guvi_task/php/login.php";
   var data =
     "email=" +
     email +

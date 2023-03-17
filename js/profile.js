@@ -34,7 +34,7 @@ $(document).ready(function () {
 
   }
   
-  var url = "https://guvi-task-63.000webhostapp.com/gettUserDataMongo.php";
+  var url = "http://localhost/guvi_task/php/gettUserDataMongo.php";
   var data =
     "email="+
     localStorage.getItem("email");
@@ -70,7 +70,7 @@ $("#linkedinbtn").click(function () {
 
   }
 
-  var url = "https://guvi-task-63.000webhostapp.com/profile.php";
+  var url = "http://localhost/guvi_task/php/profile.php";
   var data =
     "email="+
     localStorage.getItem("email") +
@@ -100,7 +100,7 @@ $("#linkedinbtn").click(function () {
 
   }
 
-  var url = "https://guvi-task-63.000webhostapp.com/profile.php";
+  var url = "http://localhost/guvi_task/php/profile.php";
   var data =
     "email="+
     localStorage.getItem("email") +
@@ -130,7 +130,7 @@ $("#githubbtn").click(function () {
 
   }
 
-  var url = "https://guvi-task-63.000webhostapp.com/profile.php";
+  var url = "http://localhost/guvi_task/php/profile.php";
   var data =
     "email="+
     localStorage.getItem("email") +
@@ -160,7 +160,7 @@ $("#addressbtn").click(function () {
 
   }
 
-  var url = "https://guvi-task-63.000webhostapp.com/profile.php";
+  var url = "http://localhost/guvi_task/php/profile.php";
   var data =
     "email="+
     localStorage.getItem("email") +

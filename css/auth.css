@@ -29,11 +29,9 @@ a {
   position: relative;
   color: aliceblue;
   margin-left: 60px;
-  max-width: 600px;
 }
 
 .box {
-  max-width: 500px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -50,11 +48,12 @@ a {
   width: 6rem;
   height: 6rem;
   top: 30%;
-  left: 7%;
+  right: 7%;
 }
 
 .help-block {
   color: red;
+  /* grid-column: 1 / 3; */
   align-items: center;
 }
 
