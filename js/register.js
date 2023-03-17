@@ -17,6 +17,7 @@ function onSubmit() {
 
     if (xmlHTTP.readyState == 4 && xmlHTTP.status == 200) {
       var rt = xmlHTTP.responseText;
+      console.log(rt);
       if (rt.toLowerCase().includes("duplicate")) {
         alert("Email already Exists");
       } else {
